@@ -69,13 +69,13 @@ make
 1- Create initial database:
 
 ```bash
-> watcher /path/to/monitor create [optional_database_path]
+> ./watcher /path/to/monitor create [optional_database_path]
 ```
 
 2- Check integrity:
 
 ```bash
-> watcher /path/to/monitor check [optional_database_path]
+> ./watcher /path/to/monitor check [optional_database_path]
 ```
 
 ## Limitations:
