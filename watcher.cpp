@@ -20,7 +20,6 @@ class Watcher
 {
 
 private:
- 
     std::unordered_map<std::string, std::string> fileHashes;
 
     std::string baseDirectory;
@@ -179,7 +178,6 @@ public:
 
                 std::string relativePath = std::filesystem::relative(filepath, baseDirectory).string();
 
-            
                 if (fileHashes.find(relativePath) == fileHashes.end())
                 {
 
@@ -200,6 +198,25 @@ public:
             }
         }
 
+        for (const auto &[filepath, hash] : fileHashes)
+        {
+
+            std::string fullPath = std::filesystem::path(baseDirectory) / filepath;
+
+            if (!std::filesystem::exists(fullPath))
+            {
+
+                std::cout << "File deleted: " << filepath << std::endl;
+
+                integrityIntact = false;
+            }
+        }
+
+        if (integrityIntact)
+        {
+
+            std::cout << "File system integrity check passed." << std::endl;
+        }
     }
 };
 
